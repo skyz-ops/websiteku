@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mewah - Imam Habib</title>
+    <style>
+        /* Gaya Mewah */
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --black: #121212;
+            --dark-gray: #1E1E1E;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--black);
+            color: var(--light-gray);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
+                              url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--gold);
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-top: 3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .section {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li::before {
+            content: '✦';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Imam Habib</h1>
+            <p>Programmer Berpengalaman</p>
+        </header>
+        
+        <div class="section">
+            <h2>Tentang Saya</h2>
+            <p>Halo! Nama saya Imam Habib. Saya seorang Programmer yang bersemangat tentang dunia Komputer.</p>
+            <p>Saya memiliki pengalaman dalam mempelajari bidang komputer ini. Dengan dedikasi dan passion yang tinggi, saya terus mengembangkan keterampilan untuk menciptakan solusi teknologi yang inovatif.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Portfolio</h2>
+            <p>Berikut beberapa proyek yang pernah saya kerjakan:</p>
+            <ul>
+                <li>
+                    <strong>Proyek 1</strong> - Sistem Manajemen Konten dengan teknologi terkini yang dirancang untuk efisiensi maksimal.
+                </li>
+                <li>
+                    <strong>Proyek 2</strong> - Aplikasi Mobile untuk manajemen keuangan pribadi dengan analitik canggih.
+                </li>
+                <li>
+                    <strong>Proyek 3</strong> - Platform E-learning interaktif dengan fitur kolaborasi real-time.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Hubungi Saya</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>jilancantik6@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0878-2143-0543</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/skyz-ops</span>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Profil Imam Habib. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+</body>
+</html>
