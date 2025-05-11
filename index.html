@@ -1,0 +1,392 @@
+# Website Clone YouTube Sederhana
+
+Berikut adalah contoh clone YouTube sederhana dengan HTML, CSS, dan sedikit JavaScript untuk fungsionalitas dasar:
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: red;
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            display: flex;
+            flex-grow: 0.5;
+            margin: 0 2rem;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            padding: 0 1.5rem;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 20px 20px 0;
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+        
+        .user-actions i {
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            position: fixed;
+            top: 70px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            overflow-y: auto;
+            padding: 1.5rem 0;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #f2f2f2;
+        }
+        
+        .sidebar-item i {
+            margin-right: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #e5e5e5;
+            margin: 1rem 0;
+        }
+        
+        /* Main Content */
+        main {
+            margin-left: 240px;
+            padding: 1.5rem;
+        }
+        
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category {
+            padding: 0.5rem 1rem;
+            margin-right: 0.8rem;
+            background-color: #e5e5e5;
+            border-radius: 16px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        
+        .category:hover, .category.active {
+            background-color: #606060;
+            color: white;
+        }
+        
+        .videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .video {
+            cursor: pointer;
+        }
+        
+        .thumbnail {
+            position: relative;
+            margin-bottom: 0.8rem;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .duration {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .video-details {
+            display: flex;
+        }
+        
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+        }
+        
+        .video-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .video-info p {
+            font-size: 0.9rem;
+            color: #606060;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            main {
+                margin-left: 0;
+            }
+            
+            .search-bar {
+                flex-grow: 1;
+                margin: 0 1rem;
+            }
+            
+            .user-actions i {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="user-actions">
+            <i class="fas fa-video"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-bookmark"></i>
+            <span>Subscriptions</span>
+        </div>
+        <hr>
+        <div class="sidebar-item">
+            <i class="fas fa-photo-video"></i>
+            <span>Library</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-history"></i>
+            <span>History</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-clock"></i>
+            <span>Watch Later</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-thumbs-up"></i>
+            <span>Liked Videos</span>
+        </div>
+        <hr>
+        <h4 style="padding: 0.8rem 1.5rem; color: #606060;">SUBSCRIPTIONS</h4>
+        <div class="sidebar-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Channel 1</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Channel 2</span>
+        </div>
+        <div class="sidebar-item">
+            <i class="fas fa-user-circle"></i>
+            <span>Channel 3</span>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="categories">
+            <div class="category active">All</div>
+            <div class="category">Music</div>
+            <div class="category">Gaming</div>
+            <div class="category">Live</div>
+            <div class="category">Programming</div>
+            <div class="category">Comedy</div>
+            <div class="category">Podcasts</div>
+            <div class="category">Recently uploaded</div>
+            <div class="category">Watched</div>
+        </div>
+        
+        <div class="videos">
+            <!-- Video 1 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">10:30</span>
+                </div>
+                <div class="video-details">
+                    <img class="channel-icon" src="https://yt3.googleusercontent.com/ytc/APkrFKZWeMCsx4Q9e_Hm6nhOOUQ3fv96QGUXiMr1-pPP=s176-c-k-c0x00ffffff-no-rj" alt="Channel Icon">
+                    <div class="video-info">
+                        <h3>Never Gonna Give You Up - Rick Astley (Official Music Video)</h3>
+                        <p>Rick Astley</p>
+                        <p>1.2B views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">4:13</span>
+                </div>
+                <div class="video-details">
+                    <img class="channel-icon" src="https://yt3.googleusercontent.com/ytc/APkrFKYcYswt_UhD7D0j6ddiQz6Gb8QouRqK6DhKYlBT=s176-c-k-c0x00ffffff-no-rj" alt="Channel Icon">
+                    <div class="video-info">
+                        <h3>PSY - GANGNAM STYLE(강남스타일) M/V</h3>
+                        <p>officialpsy</p>
+                        <p>4.5B views • 11 years ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video 3 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">3:47</span>
+                </div>
+                <div class="video-details">
+                    <img class="channel-icon" src="https://yt3.googleusercontent.com/ytc/APkrFKSI1xL4WCT9SnjQ9jxjYuYvQo6zxXZ8yoAe8XBb=s176-c-k-c0x00ffffff-no-rj" alt="Channel Icon">
+                    <div class="video-info">
+                        <h3>Ed Sheeran - Shape of You [Official Video]</h3>
+                        <p>Ed Sheeran</p>
+                        <p>5.9B views • 6 years ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video 4 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">3:20</span>
+                </div>
+                <div class="video-details">
+                    <img class="channel-icon" src="https://yt3.googleusercontent.com/ytc/APkrFKZWeMCsx4Q9e_Hm6nhOOUQ3fv96QGUXiMr1-pPP=s176-c-k-c0x00ffffff-no-rj" alt="Channel Icon">
+                    <div class="video-info">
+                        <h3>Luis Fonsi - Despacito ft. Daddy Yankee</h3>
+                        <p>Luis Fonsi</p>
+                        <p>7.9B views • 6 years ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video 5 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/RgKAFK5djSk/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">3:47</span>
+                </div>
+                <div class="video-details">
+                    <img class="channel-icon" src="https://yt3.googleusercontent.com/ytc/APkrFKyQ5Wzwr_5LulbG5W4Q5mUjjGtzgHZQ3ZP0Q=s176-c-k-c0x00ffffff-no-rj" alt="Channel Icon">
+                    <div class="video-info">
+                        <h3>Wiz Khalifa - See You Again ft. Charlie Puth [Official Video]</h3>
+                        <p>Wiz Khalifa</p>
+                        <p>6.3B views • 8 years ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video 6 -->
+            <div class="video">
+                <div class="thumbnail">
+                    <img src="https://i.ytimg.com/vi/JFm7YDVlqnI/hqdefault.jpg" alt="Thumbnail">
+                    <span class="duration">4:33</span>
+                </div>
+                <div class="
